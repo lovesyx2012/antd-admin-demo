@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { adminRoutes } from './routes'
+
+class App extends Component {
+    render() {
+        return (
+            <>
+                <Switch>
+                    {
+                        adminRoutes.map(route => {
+                            return <Route
+                                key={route.pathname}
+                                exact={route.exact}
+                                path={route.pathname}
+                                component={route.component}
+                                render={
+                                    (routeProps) => {
+                                        return <route.component {...routeProps} />
+                                    }
+                                }
+                            />
+                        })
+                    }
+                    <Redirect to={adminRoutes[0].pathname} from='/admin' exact />
+                    <Redirect to='/404' />
+                </Switch>
+
+            </>
+        )
+    }
 }
 
-export default App;
+
+export default App
