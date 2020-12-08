@@ -41,7 +41,7 @@ class Frame extends Component {
                             }
                         </Menu>
                     </Sider>
-                    <Layout style={{ padding: '16px' }}>
+                    <Layout style={{ padding: '0 0' }}>
                         {/* <Breadcrumb style={{ margin: '16px 0' }}>
                             <Breadcrumb.Item>Home</Breadcrumb.Item>
                             <Breadcrumb.Item>List</Breadcrumb.Item>

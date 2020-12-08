@@ -7,22 +7,27 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import './index.less'
 
 import { mainRoutes } from './routes'
+import { LocaleProvider } from 'antd'
+import zhCN from 'antd/lib/locale-provider/zh_CN'
 
 ReactDom.render(
-    <Router>
-        <Switch>
-            <Route path="/admin" render={(routerProps) => {
-                return <App {...routerProps} />
-            }} />
+    // 本地化
+    <LocaleProvider locale={zhCN}>
+        <Router>
+            <Switch>
+                <Route path="/admin" render={(routerProps) => {
+                    return <App {...routerProps} />
+                }} />
 
-            {
-                mainRoutes.map(route => {
-                    return <Route key={route.pathname} path={route.pathname} component={route.component} />
-                })
-            }
-            <Redirect to="/admin" from="/" exact />
-            <Redirect to="/404" />
-        </Switch>
-    </Router>,
+                {
+                    mainRoutes.map(route => {
+                        return <Route key={route.pathname} path={route.pathname} component={route.component} />
+                    })
+                }
+                <Redirect to="/admin" from="/" exact />
+                <Redirect to="/404" />
+            </Switch>
+        </Router>
+    </LocaleProvider>,
     document.getElementById("root")
 )
