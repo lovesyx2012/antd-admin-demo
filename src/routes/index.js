@@ -8,6 +8,7 @@ import ArticleEdit from "../views/Article/ArticleEdit"
 import Loading from '../components/Loading'
 // import Loadable from 'react-loadable'
 import Loadable from '../views/loadable'
+import Notification from "../views/Notifications/Notification"
 
 const Dashboard = Loadable({
     loader: () => import("../views/Dashboard/Dashboard"),
@@ -48,5 +49,9 @@ export const adminRoutes = [
         component: Setting,
         nav: true,
         title: '设置'
+    },
+    {
+        pathname: '/admin/notifications',
+        component: Notification
     },
 ]
