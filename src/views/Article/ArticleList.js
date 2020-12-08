@@ -1,7 +1,17 @@
 import { Button, Card, Table } from 'antd'
 import React, { Component } from 'react'
+import { getArticleList } from '../../services/Article'
 
 export default class ArticleList extends Component {
+
+    state = {
+        articles: []
+    }
+
+    componentDidMount() {
+        const articles = getArticleList(1, 10)
+    }
+
     render() {
         const dataSource = [
             {
@@ -34,6 +44,15 @@ export default class ArticleList extends Component {
                 dataIndex: 'address',
                 key: 'address',
             },
+            {
+                title: '操作',
+                dataIndex: 'address',
+                key: 'address',
+                render: (text, record, index) => {
+                    console.log(text, record, index)
+                    return <Button type='primary'>编辑</Button>
+                }
+            },
         ];
         return (
             <div>
@@ -42,8 +61,8 @@ export default class ArticleList extends Component {
                         dataSource={dataSource}
                         columns={columns}
                         pagination={{
-                            pageSize:100,
-                            total:1000
+                            pageSize: 100,
+                            total: 1000
                         }}
                     />
                 </Card>

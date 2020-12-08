@@ -1,6 +1,6 @@
 import logo from './logo.png'
 import React, { Component } from 'react';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu } from 'antd';
 import './frame.less';
 import { adminRoutes } from '../../routes';
 import { withRouter } from 'react-router-dom';
@@ -34,7 +34,7 @@ class Frame extends Component {
                             {
                                 adminRoutes.filter(item => item.nav === true).map(route => {
                                     return <Menu.Item key={route.pathname}>
-                                        <Icon type='dashboard' />
+                                        {/* <Icon type='dashboard' /> */}
                                         {route.title}
                                     </Menu.Item>
                                 })
