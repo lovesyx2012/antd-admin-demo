@@ -1,3 +1,4 @@
+import { message } from 'antd';
 import axios from 'axios'
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -19,6 +20,7 @@ request.interceptors.response.use(resp => {
         return resp.data.data
     } else {
         // 统一异常处理
+        return message(resp.data.message)
     }
 })
 
